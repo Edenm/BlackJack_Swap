@@ -8,11 +8,12 @@ public class Dealer extends GenericPlayer {
 	}
 	//// at next itration 
 	public void autoHit(){
+	
 		
 	}
 	
 	public void startHand(Hand hand){
 		
 	}
-
+		
 }

@@ -127,6 +127,10 @@ public class GenericPlayer {
 			}
 				
 		}
+		public Card[] getAllCards()
+		{
+			return p_cards;
+		}
 		
 		
 		

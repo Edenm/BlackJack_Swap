@@ -36,7 +36,7 @@ public class hit extends JPanel  {
 	public  JTextField textField_1;
 	public static  boolean to1= false;
 	public static  int to2= 0;
-	
+	public JButton btnLucky; 
 	public static boolean delerWon =false;
 	public static boolean palyerWon=false;
 	public hit() {
@@ -267,6 +267,16 @@ public class hit extends JPanel  {
 		btnNewButton.setBounds(37, 209, 145, 45);
 		add(btnNewButton);
 		
+		/////////Lucky button to player ////////////////
+		btnLucky  = new JButton("Lucky Me");
+		btnLucky.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		
 		/////////hit buttom to player ////////////////
 		JButton btnHit = new JButton("Hit");
 		btnHit.addActionListener(new ActionListener() {
@@ -306,6 +316,7 @@ public class hit extends JPanel  {
 							 mainvvd.engine.Game.player.score-=mainvvd.engine.Game.player.scoreBet;
 							 con.UpDate_Score(mainvvd.engine.Game.player.name, score);
 							 to2=1;
+							 checkLuckyButtonForShow(btnLucky);
 							return;
 						}
 					  return ;
@@ -327,8 +338,8 @@ public class hit extends JPanel  {
 							 mainvvd.engine.Game.player.stand();
 							 mainvvd.engine.Game.player.score-=mainvvd.engine.Game.player.scoreBet;
 							 con.UpDate_Score(mainvvd.engine.Game.player.name, score);
-
 							 to2=1;
+							 checkLuckyButtonForShow(btnLucky);
 							return;
 						}
 					  return ;
@@ -347,7 +358,7 @@ public class hit extends JPanel  {
 						  JOptionPane.showMessageDialog(null,"Player Busted!! Start a New Hand ");
 							 mainvvd.engine.Game.player.stand();
 							 mainvvd.engine.Game.player.score-=mainvvd.engine.Game.player.scoreBet;
-
+							 checkLuckyButtonForShow(btnLucky);
 							 to2=1;
 							return;
 						}
@@ -358,6 +369,7 @@ public class hit extends JPanel  {
 				
 				
 			}
+			
 		});
 		btnHit.setBounds(37, 287, 145, 45);
 		add(btnHit);
@@ -431,19 +443,17 @@ public class hit extends JPanel  {
 		final BufferedImage newImage = resizeImage(img1,Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
 		lblNewLabe.setIcon(new ImageIcon(newImage));
 		
-		
-		
-		
-	
-		
-		
-		
-		
-		  
-		
 	}
+	
+	
 	//////////function that resizeImage //////////////////////
 	
+	public void checkLuckyButtonForShow(JButton btnLucky){
+		
+		if (mainvvd.engine.Game.player.sameColors() && mainvvd.engine.Game.dealer.isGoodForSwap())
+			btnLucky.setVisible(true);
+		
+	}
 	
 	
 	public static BufferedImage resizeImage(final Image image, int width, int height) {

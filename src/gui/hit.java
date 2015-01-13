@@ -269,12 +269,35 @@ public class hit extends JPanel  {
 		
 		/////////Lucky button to player ////////////////
 		btnLucky  = new JButton("Lucky Me");
+		btnLucky.setBounds(150, 550, 145, 45);
+		add(btnLucky);
+		btnLucky.setVisible(false);
 		btnLucky.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if (mainvvd.engine.Game.dealer.isGoodForSwap()){
+				/////////flip second card of dealer////////////////
+					String Card_Name =new String();
+					Card_Name=mainvvd.engine.Game.dealer.Hit();
+					lblDelerSecondCard.setVisible(true);
+					Image  img2 = new ImageIcon(this.getClass().getResource(Card_Name)).getImage();
+					final BufferedImage newImage = resizeImage(img2,97,119);
+					lblDelerSecondCard.setIcon(new ImageIcon(newImage));
+				/////////show message and update score////////////
+					sql_con con = new sql_con();
+					
+					int score = mainvvd.engine.Game.player.score+(mainvvd.engine.Game.player.scoreBet*2);
+					JOptionPane.showMessageDialog(null,"Player Wins "+mainvvd.engine.Game.player.scoreBet*2+"$, Start a New Hand ");
+					mainvvd.engine.Game.player.score+=(mainvvd.engine.Game.player.scoreBet*2);
+					con.UpDate_Score(mainvvd.engine.Game.player.name, score);
+					
+					to2=1;
+				}
 			}
 		});
+		
+		
+		
 		
 		
 		/////////hit buttom to player ////////////////
@@ -307,8 +330,7 @@ public class hit extends JPanel  {
 					label3.setIcon(new ImageIcon(newImage));
 					playSound();
 					  hit.textField.setText("" + mainvvd.engine.Game.player.getSum_cards());
-		
-					
+	
 					  if(mainvvd.engine.Game.player.IsBusted()==true){
 						  int score = mainvvd.engine.Game.player.score-mainvvd.engine.Game.player.scoreBet;
 							 JOptionPane.showMessageDialog(null,"Player Busted!! Start a New Hand ");
@@ -316,9 +338,9 @@ public class hit extends JPanel  {
 							 mainvvd.engine.Game.player.score-=mainvvd.engine.Game.player.scoreBet;
 							 con.UpDate_Score(mainvvd.engine.Game.player.name, score);
 							 to2=1;
-							 checkLuckyButtonForShow(btnLucky);
 							return;
 						}
+					  checkLuckyButtonForShow();
 					  return ;
 				}
 				
@@ -339,9 +361,9 @@ public class hit extends JPanel  {
 							 mainvvd.engine.Game.player.score-=mainvvd.engine.Game.player.scoreBet;
 							 con.UpDate_Score(mainvvd.engine.Game.player.name, score);
 							 to2=1;
-							 checkLuckyButtonForShow(btnLucky);
 							return;
 						}
+					  checkLuckyButtonForShow();
 					  return ;
 				}
 				if(mainvvd.engine.Game.player.getCurrect_cards()==4){
@@ -358,11 +380,10 @@ public class hit extends JPanel  {
 						  JOptionPane.showMessageDialog(null,"Player Busted!! Start a New Hand ");
 							 mainvvd.engine.Game.player.stand();
 							 mainvvd.engine.Game.player.score-=mainvvd.engine.Game.player.scoreBet;
-							 checkLuckyButtonForShow(btnLucky);
 							 to2=1;
 							return;
 						}
-					 
+					  checkLuckyButtonForShow();
 					  return ;
 				}
 				
@@ -445,13 +466,12 @@ public class hit extends JPanel  {
 		
 	}
 	
-	
 	//////////function that resizeImage //////////////////////
 	
-	public void checkLuckyButtonForShow(JButton btnLucky){
-		
-		if (mainvvd.engine.Game.player.sameColors() && mainvvd.engine.Game.dealer.isGoodForSwap())
+	public void checkLuckyButtonForShow(){
+		if (mainvvd.engine.Game.player.sameColors()){
 			btnLucky.setVisible(true);
+		}
 		
 	}
 	

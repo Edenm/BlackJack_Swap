@@ -44,7 +44,6 @@ public class Hand {
 			else
 				cards[i].color=Color.red;
 			
-			
 			cards[i].setFace(true); //All cards are face up
 		}
 		
@@ -53,6 +52,8 @@ public class Hand {
 	public void shuffle(){
 		// We don't need it 
 	}
+	
+	int count=1;
 	public Card getCard(){
 		int avalable;
 	    Random randomGenerator = new Random();
@@ -69,7 +70,7 @@ public class Hand {
 			avalable = Math.abs( randomGenerator.nextInt()%52);
 				}
 		this.onDeck[avalable]=1; //not avalaible any more
-		
+	
 		return this.cards[avalable];
 	}
 	public void  upatePlayerScore(){

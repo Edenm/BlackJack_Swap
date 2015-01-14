@@ -14,6 +14,7 @@ public class Player extends GenericPlayer {
 	} 	
 	
 	public void startHand(Hand hand){ 
+		
 	}
 	
 	public boolean sameColors()
@@ -23,10 +24,11 @@ public class Player extends GenericPlayer {
 		
 		for(Card c : super.getAllCards())
 		{
-			if(c.color==Color.Black)
-				blackCounter++;
-			else
-				redCounter++;
+				if(c.color==Color.Black){
+					blackCounter++;
+				}
+				else
+					redCounter++;
 		}
 		if(redCounter>=3 || blackCounter>=3)
 			return true;

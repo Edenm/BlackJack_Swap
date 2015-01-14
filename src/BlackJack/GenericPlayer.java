@@ -2,13 +2,6 @@ package BlackJack;
 
 import gui.mainvvd;
 
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-
-import javax.swing.ImageIcon;
-
 public class GenericPlayer {
 		public Card[] p_cards;
 		public Integer sum_cards;
@@ -50,7 +43,6 @@ public class GenericPlayer {
 		}
 		///hit mithod he hit for the plaer and the deler a card and the value abd update the sum card and the count of card to player
 		public String Hit(){
-			
 			
 			Card tmp1 = new Card();
 			tmp1 = mainvvd.engine.Game.hand_round.getCard();

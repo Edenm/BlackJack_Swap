@@ -17,6 +17,8 @@ public class Dealer extends GenericPlayer {
 	}
 	public boolean isGoodForSwap()
 	{
+		if(super.sum_cards==null)
+			return false;
 		for(Card c :super.getAllCards())
 			if(c.getNumber()==12&&c.getSuit()==4)
 				return false;

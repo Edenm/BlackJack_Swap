@@ -6,6 +6,7 @@ public class Card {
 	private int suit;
 	private Boolean face;
 	public String src;
+	public Color color;
 	public String getSrc() {
 		return src;
 	}

@@ -39,6 +39,10 @@ public class Hand {
 			
 			cards[i].src = new String();
 			cards[i].setSrc("/cards/"+suit+"_"+((i%13)+1)+".png");
+			if(suit==1 || suit==4 )
+				cards[i].color=Color.Black;
+			else
+				cards[i].color=Color.red;
 			
 			
 			cards[i].setFace(true); //All cards are face up

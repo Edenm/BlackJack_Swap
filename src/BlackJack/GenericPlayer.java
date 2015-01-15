@@ -1,9 +1,12 @@
 package BlackJack;
 
+
+
 import gui.mainvvd;
 
 public class GenericPlayer {
-		public Card[] p_cards;
+		public static  Card[] p_cards;
+		public static  Card[] p_cardsDealer;
 		public Integer sum_cards;
 		public String name;
 		private int currect_cards;
@@ -13,9 +16,11 @@ public class GenericPlayer {
 		public GenericPlayer(String name) {
 			super();
 			this.name=name;
-			this.p_cards = new Card[5];
+			p_cards = new Card[5];
+			 p_cardsDealer=new Card[5];
 			for(int i=0;p_cards.length<5;i++){
 				p_cards[i] =new Card();
+				 p_cardsDealer[i]=new Card();
 			}
 			this.setSum_cards(0);
 			this.setCurrect_cards(0);
@@ -48,7 +53,7 @@ public class GenericPlayer {
 			tmp1 = mainvvd.engine.Game.hand_round.getCard();
 			String CardName = new String();
 			CardName = tmp1.getSrc();
-			
+					
 			if(this.name=="Dealer"){	
 					if(tmp1.getNumber()==1){
 						if(this.sum_cards+11>21)
@@ -91,12 +96,18 @@ public class GenericPlayer {
 					this.sum_cards+=10;
 				}
 				else this.sum_cards += tmp1.getNumber();
-				
-				
+				if(this.name!="Dealer")
+					addCard(tmp1);
+				else
+					addCardDealer(tmp1);
 				this.currect_cards ++;	
 				
 
 			}
+			
+		
+			
+				
 			
 			return CardName=tmp1.getSrc();
 			
@@ -106,7 +117,12 @@ public class GenericPlayer {
 		
 		public void addCard(Card card){
 			this.p_cards[this.currect_cards] = card;
-			this.currect_cards++;
+			//this.currect_cards++;
+			//TODO STOP at 5 CARDS
+		}
+		public void addCardDealer(Card card){
+			p_cardsDealer[this.currect_cards] = card;
+			//this.currect_cards++;
 			//TODO STOP at 5 CARDS
 		}
 		public boolean IsBusted(){

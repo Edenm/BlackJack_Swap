@@ -8,8 +8,8 @@ public class BlackJack {
 	////deal start a hand to player and deler
 	public void Deal(){
 		player.startHand(hand_round);
+		dealer.startHand(hand_round);	
 		
-		dealer.startHand(hand_round);		
 	}
 
 /////new game ///////////////////////////////////////////

@@ -441,6 +441,7 @@ public class hit extends JPanel  {
 				 textField_score_deler.setText("0");
 				 hit.textField.setText("0");
 				 mainvvd.engine.Game.hand_round.initialize();
+				 mainvvd.engine.Creategame();
 				 mainvvd.engine.Game.dealer.ace_value=0;
 				 mainvvd.engine.Game.dealer.setCurrect_cards(0);
 				 mainvvd.engine.Game.dealer.setSum_cards(0);

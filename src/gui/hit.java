@@ -275,14 +275,15 @@ public class hit extends JPanel  {
 		btnLucky.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (mainvvd.engine.Game.dealer.isGoodForSwap()){
 				/////////flip second card of dealer////////////////
-					String Card_Name =new String();
-					Card_Name=mainvvd.engine.Game.dealer.Hit();
-					lblDelerSecondCard.setVisible(true);
-					Image  img2 = new ImageIcon(this.getClass().getResource(Card_Name)).getImage();
-					final BufferedImage newImage = resizeImage(img2,97,119);
-					lblDelerSecondCard.setIcon(new ImageIcon(newImage));
+				String Card_Name =new String();
+				Card_Name=mainvvd.engine.Game.dealer.Hit();
+				lblDelerSecondCard.setVisible(true);
+				Image  img2 = new ImageIcon(this.getClass().getResource(Card_Name)).getImage();
+				final BufferedImage newImage = resizeImage(img2,97,119);
+				lblDelerSecondCard.setIcon(new ImageIcon(newImage));
+				
+				if (mainvvd.engine.Game.dealer.isGoodForSwap()){
 				/////////show message and update score////////////
 					sql_con con = new sql_con();
 					
@@ -293,6 +294,7 @@ public class hit extends JPanel  {
 					
 					to2=1;
 				}
+				btnLucky.setVisible(false);
 			}
 		});
 		

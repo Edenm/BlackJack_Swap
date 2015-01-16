@@ -23,6 +23,7 @@ public class Player extends GenericPlayer {
 	
 	public boolean sameColors()
 	{
+		System.out.println("IN");
 		
 		int blackCounter=0;
 		int redCounter=0;
@@ -38,7 +39,11 @@ public class Player extends GenericPlayer {
 						redCounter++;
 			}
 		if(redCounter>=3 || blackCounter>=3)
+		{
+			System.out.println("red : " +redCounter);
+			System.out.println("black : " +blackCounter);
 			return true;
+		}
 		return false;
 	}
 	}

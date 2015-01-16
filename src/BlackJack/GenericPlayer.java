@@ -19,6 +19,7 @@ public class GenericPlayer {
 			p_cards = new Card[5];
 			 p_cardsDealer=new Card[5];
 			for(int i=0;p_cards.length<5;i++){
+				System.out.println("4444");
 				p_cards[i] =new Card();
 				 p_cardsDealer[i]=new Card();
 			}
@@ -48,9 +49,10 @@ public class GenericPlayer {
 		}
 		///hit mithod he hit for the plaer and the deler a card and the value abd update the sum card and the count of card to player
 		public String Hit(){
-			
+			System.out.println();
 			Card tmp1 = new Card();
 			tmp1 = mainvvd.engine.Game.hand_round.getCard();
+			System.out.println(tmp1.src);
 			String CardName = new String();
 			CardName = tmp1.getSrc();
 					

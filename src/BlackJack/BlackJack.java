@@ -9,6 +9,8 @@ public class BlackJack {
 	public void Deal(){
 		player.startHand(hand_round);
 		dealer.startHand(hand_round);	
+		ClearCards();
+		System.out.println("new game");
 		
 	}
 
@@ -19,5 +21,15 @@ public class BlackJack {
 		 dealer =  new Dealer("Dealer");
 		 hand_round = new Hand();
 	}
+	
+	private void ClearCards()
+	{
+		for(int i=0;i<5;i++)
+		{
+			GenericPlayer.p_cards[i] =new Card();
+			GenericPlayer.p_cardsDealer[i] =new Card();
+		}
+	}
+
 
 }
